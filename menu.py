@@ -4,7 +4,10 @@ def getChoice():
             choix = int(input("Entrez votre choix: "))
             return choix
         except ValueError:
-            print("Veuillez entrer un nombre.")
+            print(f"\033[91mVeuillez entrer un nombre !\033[0m")
+            print("~"*50)
+            displayMainMenu()
+
 
 def displayMainMenu():
   print("1. Voir tous les tickets")

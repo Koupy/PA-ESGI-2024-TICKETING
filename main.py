@@ -1,21 +1,22 @@
 import menu
+import verif
 
-
+print("Au Temps Donné - Ticketing")
 while True:
-  print("Au Temps Donné - Ticketing")
+  print("~"*50)
   menu.displayMainMenu()
   
-  choix = menu.getChoice()
+  choice = menu.getChoice()
+  verif.verifChoice(choice)
   
-  if choix == 0:
-      menu.exitMenu()
-      break
-  elif choix == 1:
-      menu.mainMenuOption1()
-  elif choix == 2:
-      menu.mainMenuOption2()
-  elif choix == 3:
-      menu.mainMenuOption3()
+  if choice == 0:
+    menu.exitMenu()
+    break
+  elif choice == 1:
+    menu.mainMenuOption1()
+  elif choice == 2:
+    menu.mainMenuOption2()
+  elif choice == 3:
+    menu.mainMenuOption3()
   else:
-      print("Option invalide")
-
+    print(f"\033[91mOption invalide !\033[0m")
