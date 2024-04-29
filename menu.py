@@ -1,3 +1,5 @@
+import ticket
+
 def getChoice():
     while True:
         try:
@@ -8,10 +10,10 @@ def getChoice():
             print("~"*50)
             displayMainMenu()
 
-
 def displayMainMenu():
-  print("1. Voir tous les tickets")
-  print("2. Voir mes tickets")
+  print("1. Voir les tickets par catégorie")
+  print("2. Voir les tickets par statut")
+  print("3. Voir tous les tickets")
   print("0. Quitter")
 
 def mainMenuOption1():
