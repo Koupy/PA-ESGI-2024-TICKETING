@@ -7,7 +7,6 @@ while True:
   menu.displayMainMenu()
   
   choice = menu.getChoice()
-  verif.verifChoice(choice)
   
   if choice == 0:
     menu.exitMenu()
