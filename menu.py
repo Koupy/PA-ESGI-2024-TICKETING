@@ -11,13 +11,17 @@ def getChoice():
             displayMainMenu()
 
 def displayMainMenu():
-  print("1. Voir les tickets par catégorie")
-  print("2. Voir les tickets par statut")
-  print("3. Voir tous les tickets")
+  print("1. Voir les tickets par priorité")
+  print("2. Voir les tickets par catégorie")
+  print("3. Voir les tickets par statut")
+  print("4. Voir tous les tickets")
   print("0. Quitter")
 
-def mainMenuCategory():
+def mainMenuPriority():
     ticket.choosePriority()
+
+def mainMenuCategory():
+    ticket.chooseCategory()
 
 def mainMenuStatus():
     ticket.chooseStatus()
