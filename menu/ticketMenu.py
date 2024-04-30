@@ -1,4 +1,3 @@
-import menu
 import menu.mainMenu
 
 def categoryTicket():

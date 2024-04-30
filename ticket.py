@@ -1,22 +1,39 @@
 import requests
+import menu.ticketMenu
+import menu
 
 priority = ["Faible", "Moyen", "Élevé", "Critique"]
 status = ["Ouvert", "En cours", "Résolu"]
 category = ["Stocks", "Camions", "Entrepots", "Services", "Plannings", "Activités"]
 
-def getTicket():
+def getTickets():
   url = 'http://localhost:5000/api/ticket/'
   response = requests.get(url)
   return response
 
 def seeTickets():
-  response = getTicket()
+  response = getTickets()
   print('Response Content:', response.text)
 
 def chooseCategory():
+  getTickets()
   print("Quel tickets souhaitez vous voir ?")
   for i in range(len(category)):
     print(f"{i+1}. {category[i]} (/nmb_tickets/)")
+
+  menu.ticketMenu.categoryTicket()
+    
+  
+
+
+
+
+
+
+
+
+
+
 
 def choosePriority():
   print("Quel tickets souhaitez vous voir ?")
