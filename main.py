@@ -1,23 +1,24 @@
 import menu
+import menu.mainMenu
 import verif
 
 print("Au Temps Donné - Ticketing")
 while True:
   print("~"*50)
-  menu.displayMainMenu()
+  menu.mainMenu.displayMainMenu()
   
-  choice = menu.getChoice()
+  choice = menu.mainMenu.getChoice()
   
   if choice == 0:
-    menu.exitMenu()
+    menu.mainMenu.exitMenu()
     break
   elif choice == 1:
-    menu.mainMenuPriority()
+    menu.mainMenu.mainMenuPriority()
   elif choice == 2:
-    menu.mainMenuCategory()
+    menu.mainMenu.mainMenuCategory()
   elif choice == 3:
-    menu.mainMenuStatus()
+    menu.mainMenu.mainMenuStatus()
   elif choice == 4:
-    menu.mainMenuAllTickets()
+    menu.mainMenu.mainMenuAllTickets()
   else:
     print(f"\033[91mOption invalide !\033[0m")
