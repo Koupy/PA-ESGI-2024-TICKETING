@@ -12,10 +12,10 @@ while True:
     menu.exitMenu()
     break
   elif choice == 1:
-    menu.mainMenuOption1()
+    menu.mainMenuCategory()
   elif choice == 2:
-    menu.mainMenuOption2()
+    menu.mainMenuStatus()
   elif choice == 3:
-    menu.mainMenuOption3()
+    menu.mainMenuAllTickets()
   else:
     print(f"\033[91mOption invalide !\033[0m")
