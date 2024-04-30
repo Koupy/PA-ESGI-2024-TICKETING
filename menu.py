@@ -16,14 +16,14 @@ def displayMainMenu():
   print("3. Voir tous les tickets")
   print("0. Quitter")
 
-def mainMenuOption1():
-    print("1")
+def mainMenuCategory():
+    ticket.choosePriority()
 
-def mainMenuOption2():
-    print("2")
+def mainMenuStatus():
+    ticket.chooseStatus()
 
-def mainMenuOption3():
-    print("3")
+def mainMenuAllTickets():
+    ticket.seeTickets()
 
 def exitMenu():
     print("Exit")
