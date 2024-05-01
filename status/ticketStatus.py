@@ -2,7 +2,7 @@ import ticket
 import menu.ticketMenu
 
 def chooseStatus():
-    status_map = {1: "ouvert", 2: "en cours", 3: "résolu"}
+    status_map = {1: "ouvert", 2: "en cours", 3: "resolu"}
     ticket.displayChoices('status', status_map)
     menu.ticketMenu.statusTicket()
 
