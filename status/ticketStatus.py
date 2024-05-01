@@ -8,18 +8,28 @@ def chooseStatus():
 
 def displayTicketsByStatus(status):
     tickets = ticket.getTickets()
+    foundTickets = False
     for ticket_item in tickets:
         if ticket_item['status'] == status:
-            print("."*10)
+            foundTickets = True
+            print("\033[96m" + "."*10 + "\033[0m")
             print(ticket_item['title'])
             print(f"Description : {ticket_item['description']}")
             print("Quel ticket souhaitez vous voir ?")
+    
+    return foundTickets
 
 def openTicket():
-    displayTicketsByStatus("Ouvert")
+    if not displayTicketsByStatus("Ouvert"):
+        print("Il n'y a pas de tickets ouverts.")
+        return
 
-def ongoingticket():
-    displayTicketsByStatus("En cours")
+def ongoingTicket():
+    if not displayTicketsByStatus("En cours"):
+        print("Il n'y a pas de tickets en cours.")
+        return
 
 def closedTicket():
-    displayTicketsByStatus("Resolu")
+    if not displayTicketsByStatus("Resolu"):
+        print("Il n'y a pas de tickets résolus.")
+        return
