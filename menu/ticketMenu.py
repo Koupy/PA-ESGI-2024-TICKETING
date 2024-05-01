@@ -1,17 +1,18 @@
 import menu.mainMenu
+import priority.ticketPriority
 
 def categoryTicket():
   while True:
     choice = menu.mainMenu.getChoice()
   
     if choice == 1:
-      menu.mainMenu.mainMenuPriority()
+      priority.ticketPriority.lowTicketPriority()
     elif choice == 2:
-      menu.mainMenu.mainMenuCategory()
+      priority.ticketPriority.midTicketPriority()
     elif choice == 3:
-      menu.mainMenu.mainMenuStatus()
+      priority.ticketPriority.highTicketPriority()
     elif choice == 4:
-      menu.mainMenu.mainMenuAllTickets()
+      priority.ticketPriority.criticalTicketPriority()
     else:
       print(f"\033[91mOption invalide !\033[0m")
 
