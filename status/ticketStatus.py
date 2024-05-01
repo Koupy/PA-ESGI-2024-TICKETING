@@ -9,27 +9,39 @@ def chooseStatus():
 def displayTicketsByStatus(status):
     tickets = ticket.getTickets()
     foundTickets = False
-    for ticket_item in tickets:
-        if ticket_item['status'] == status:
+    ticket_list = []
+    for index, ticket_item in enumerate(tickets, start=1):
+        if ticket_item['status'].lower() == status.lower():
             foundTickets = True
-            print("\033[96m" + "."*10 + "\033[0m")
-            print(ticket_item['title'])
-            print(f"Description : {ticket_item['description']}")
-            print("Quel ticket souhaitez vous voir ?")
-    
-    return foundTickets
+            ticket_list.append(ticket_item)
+            print(f"\033[96m{index}. {ticket_item['title']}\033[0m")
+            print(f"   Description : {ticket_item['description']}")
+
+    return foundTickets, ticket_list
 
 def openTicket():
-    if not displayTicketsByStatus("Ouvert"):
+    found, tickets = displayTicketsByStatus("Ouvert")
+    if not found:
         print("Il n'y a pas de tickets ouverts.")
         return
+    selected_ticket = ticket.selectTicket(tickets)
+    if selected_ticket:
+        print(f"Vous avez sélectionné le ticket: {selected_ticket['title']} - {selected_ticket['description']}")
 
 def ongoingTicket():
-    if not displayTicketsByStatus("En cours"):
+    found, tickets = displayTicketsByStatus("En cours")
+    if not found:
         print("Il n'y a pas de tickets en cours.")
         return
+    selected_ticket = ticket.selectTicket(tickets)
+    if selected_ticket:
+        print(f"Vous avez sélectionné le ticket: {selected_ticket['title']} - {selected_ticket['description']}")
 
 def closedTicket():
-    if not displayTicketsByStatus("Resolu"):
+    found, tickets = displayTicketsByStatus("Resolu")
+    if not found:
         print("Il n'y a pas de tickets résolus.")
         return
+    selected_ticket = ticket.selectTicket(tickets)
+    if selected_ticket:
+        print(f"Vous avez sélectionné le ticket: {selected_ticket['title']} - {selected_ticket['description']}")
