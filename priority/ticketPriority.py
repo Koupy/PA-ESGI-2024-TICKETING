@@ -8,20 +8,32 @@ def choosePriority():
 
 def displayTicketsByPriority(priority):
     tickets = ticket.getTickets()
+    foundTickets = False
     for ticket_item in tickets:
         if ticket_item['priority'] == priority:
-            print("."*10)
+            foundTickets = True
+            print("\033[96m" + "."*10 + "\033[0m")
             print(ticket_item['title'])
             print(f"Description : {ticket_item['description']}")
-                
+    
+    return foundTickets 
+
 def lowTicketPriority():
-    displayTicketsByPriority(1)
+    if not displayTicketsByPriority(1):
+        print("Il n'y a pas de tickets de priorité faible.")
+        return
 
 def midTicketPriority():
-    displayTicketsByPriority(2)
+    if not displayTicketsByPriority(2):
+        print("Il n'y a pas de tickets de priorité moyenne.")
+        return
 
 def highTicketPriority():
-    displayTicketsByPriority(3)
+    if not displayTicketsByPriority(3):
+        print("Il n'y a pas de tickets de priorité élevée.")
+        return
 
 def criticalTicketPriority():
-    displayTicketsByPriority(4)
+    if not displayTicketsByPriority(4):
+        print("Il n'y a pas de tickets de priorité critique.")
+        return
