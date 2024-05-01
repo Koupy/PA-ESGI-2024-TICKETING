@@ -1,5 +1,4 @@
 import requests
-import menu.ticketMenu
 
 def getTickets():
     url = 'http://localhost:5000/api/ticket/'
@@ -10,8 +9,9 @@ def seeTickets():
     tickets = getTickets()
     for ticket in tickets:
         print("."*10)
-        print(ticket['title'])  
-        print(f"Description : {ticket['title']}")  
+        print(ticket)
+        # print(ticket['title'])  
+        # print(f"Description : {ticket['title']}")  
 
 def countTicketsByAttribute(tickets, attribute, value_map):
     counts = {value: 0 for value in value_map.values()}
