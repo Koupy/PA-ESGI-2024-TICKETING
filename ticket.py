@@ -8,7 +8,7 @@ def getTickets():
 def seeTickets():
     tickets = getTickets()
     for ticket in tickets:
-        print("."*10)
+        print("\033[96m" + "."*10 + "\033[0m")
         print(ticket)
         # print(ticket['title'])  
         # print(f"Description : {ticket['title']}")  
