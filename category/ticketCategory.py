@@ -12,42 +12,67 @@ def chooseCategory():
 def displayTicketsByCategory(category):
     tickets = ticket.getTickets()
     foundTickets = False
-    for ticket_item in tickets:
-        if ticket_item['category'] == category:
+    ticket_list = []
+    for index, ticket_item in enumerate(tickets, 1):
+        if ticket_item['category'].lower() == category.lower():
             foundTickets = True
-            print("\033[96m" + "."*10 + "\033[0m")
-            print(ticket_item['title'])
-            print(f"Description : {ticket_item['description']}")
-            print("Quel ticket souhaitez vous voir ?")
-    
-    return foundTickets
+            ticket_list.append(ticket_item)
+            print(f"\033[96m{index}. {ticket_item['title']}\033[0m")
+            print(f"   Description : {ticket_item['description']}")
+
+    return foundTickets, ticket_list
+
 
 def stockTicket():
-    if not displayTicketsByCategory("stock"):
+    found, tickets = displayTicketsByCategory("stock")
+    if not found:
         print("Il n'y a pas de tickets dans la catégorie des stocks.")
         return
-    
+    selected_ticket = ticket.selectTicket(tickets)
+    if selected_ticket:
+        print(f"Vous avez sélectionné le ticket: {selected_ticket['title']}")
+
 def truckTicket():
-    if not displayTicketsByCategory("truck"):
+    found, tickets = displayTicketsByCategory("truck")
+    if not found:
         print("Il n'y a pas de tickets dans la catégorie des camions.")
         return
+    selected_ticket = ticket.selectTicket(tickets)
+    if selected_ticket:
+        print(f"Vous avez sélectionné le ticket: {selected_ticket['title']}")
 
 def warehouseTicket():
-    if not displayTicketsByCategory("warehouse"):
+    found, tickets = displayTicketsByCategory("warehouse")
+    if not found:
         print("Il n'y a pas de tickets dans la catégorie des entrepôts.")
         return
+    selected_ticket = ticket.selectTicket(tickets)
+    if selected_ticket:
+        print(f"Vous avez sélectionné le ticket: {selected_ticket['title']}")
 
 def serviceTicket():
-    if not displayTicketsByCategory("service"):
+    found, tickets = displayTicketsByCategory("service")
+    if not found:
         print("Il n'y a pas de tickets dans la catégorie des services.")
         return
+    selected_ticket = ticket.selectTicket(tickets)
+    if selected_ticket:
+        print(f"Vous avez sélectionné le ticket: {selected_ticket['title']}")
 
 def planningTicket():
-    if not displayTicketsByCategory("planning"):
+    found, tickets = displayTicketsByCategory("planning")
+    if not found:
         print("Il n'y a pas de tickets dans la catégorie des plannings.")
         return
+    selected_ticket = ticket.selectTicket(tickets)
+    if selected_ticket:
+        print(f"Vous avez sélectionné le ticket: {selected_ticket['title']}")
 
 def activityTicket():
-    if not displayTicketsByCategory("activity"):
+    found, tickets = displayTicketsByCategory("activity")
+    if not found:
         print("Il n'y a pas de tickets dans la catégorie des activités.")
         return
+    selected_ticket = ticket.selectTicket(tickets)
+    if selected_ticket:
+        print(f"Vous avez sélectionné le ticket: {selected_ticket['title']}")
