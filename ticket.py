@@ -28,22 +28,6 @@ def countTicketsByAttribute(tickets, attribute, value_map):
             
     return counts
 
-def chooseCategory():
-    api_category_names = ["stock", "truck", "warehouse", "service", "planning", "activity"]
-    display_category_names = ["stocks", "camions", "entrepots", "services", "plannings", "activités"]
-    category_map = dict(zip(api_category_names, display_category_names))
-    displayChoices('category', category_map)
-    
-    menu.ticketMenu.categoryTicket()
-
-def choosePriority():
-    priority_map = {1: "faible", 2: "moyen", 3: "élevé", 4: "critique"}
-    displayChoices('priority', priority_map)
-
-def chooseStatus():
-    status_map = {1: "ouvert", 2: "en cours", 3: "résolu"}
-    displayChoices('status', status_map)
-
 def displayChoices(attribute, value_map):
     tickets = getTickets()
     counts = countTicketsByAttribute(tickets, attribute, value_map)

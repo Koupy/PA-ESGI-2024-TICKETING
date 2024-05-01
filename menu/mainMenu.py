@@ -1,4 +1,10 @@
+import category.ticketCategory
+import priority.ticketPriority
+import status.ticketStatus
 import ticket
+import priority
+import status
+import category
 
 def getChoice():
     while True:
@@ -18,13 +24,13 @@ def displayMainMenu():
   print("0. Quitter")
 
 def mainMenuPriority():
-    ticket.choosePriority()
+    priority.ticketPriority.choosePriority()
 
 def mainMenuCategory():
-    ticket.chooseCategory()
+    category.ticketCategory.chooseCategory()
 
 def mainMenuStatus():
-    ticket.chooseStatus()
+    status.ticketStatus.chooseStatus()
 
 def mainMenuAllTickets():
     ticket.seeTickets()
