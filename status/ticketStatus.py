@@ -22,4 +22,4 @@ def ongoingticket():
     displayTicketsByStatus("En cours")
 
 def closedTicket():
-    displayTicketsByStatus("Fermé")
+    displayTicketsByStatus("Resolu")
