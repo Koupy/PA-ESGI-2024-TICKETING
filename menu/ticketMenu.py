@@ -17,6 +17,8 @@ def priorityTicket():
       priority.ticketPriority.criticalTicketPriority()
     else:
       print(f"\033[91mOption invalide !\033[0m")
+    
+    break
 
 def statusTicket():
   while True:
@@ -30,6 +32,8 @@ def statusTicket():
       status.ticketStatus.closedTicket()
     else:
       print(f"\033[91mOption invalide !\033[0m")
+
+    break
 
 def categoryTicket():
   while True:
@@ -49,3 +53,5 @@ def categoryTicket():
       category.ticketCategory.activityTicket()
     else:
       print(f"\033[91mOption invalide !\033[0m")
+
+    break

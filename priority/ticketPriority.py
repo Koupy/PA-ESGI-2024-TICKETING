@@ -4,7 +4,7 @@ import menu.ticketMenu
 def choosePriority():
     priority_map = {1: "faible", 2: "moyen", 3: "élevé", 4: "critique"}
     ticket.displayChoices('priority', priority_map)
-    menu.ticketMenu.categoryTicket()
+    menu.ticketMenu.priorityTicket()
 
 def displayTicketsByPriority(priority):
     tickets = ticket.getTickets()
@@ -13,8 +13,7 @@ def displayTicketsByPriority(priority):
             print("."*10)
             print(ticket_item['title'])
             print(f"Description : {ticket_item['description']}")
-            print("Quel ticket souhaitez vous voir ?")
-
+                
 def lowTicketPriority():
     displayTicketsByPriority(1)
 
