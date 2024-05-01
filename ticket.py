@@ -34,3 +34,17 @@ def displayChoices(attribute, value_map):
     print(f"Quels tickets souhaitez-vous voir ?")
     for i, (key, value) in enumerate(value_map.items()):
         print(f"{i+1}. {value} ({counts.get(value, 0)})")
+
+def selectTicket(ticket_list):
+    print("Entrez le numéro du ticket (0 pour revenir au menu)")
+    while True:
+        try:
+            choice = int(input("Votre choix: "))
+            if choice == 0:
+                return None
+            if 1 <= choice <= len(ticket_list):
+                return ticket_list[choice - 1]
+            else:
+                print("Choix invalide. Veuillez entrer un numéro de ticket valide.")
+        except ValueError:
+            print("Veuillez entrer un nombre.")
