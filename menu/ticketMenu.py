@@ -27,7 +27,7 @@ def statusTicket():
     if choice == 1:
       status.ticketStatus.openTicket()
     elif choice == 2:
-      status.ticketStatus.ongoingticket()
+      status.ticketStatus.ongoingTicket()
     elif choice == 3:
       status.ticketStatus.closedTicket()
     else:
