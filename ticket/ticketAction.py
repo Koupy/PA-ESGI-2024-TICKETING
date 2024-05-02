@@ -1,4 +1,4 @@
-import requests
+import ticket.ticketResponse
 from datetime import datetime
 
 def formatDate(date_str):
@@ -44,8 +44,18 @@ def displayTicketDetails(ticket):
     print(f"Créé le: {formattedDate}")
     print("\033[96m" + "."*10 + "\033[0m")
 
-def addCommentToTicket(ticket):
-    return 1
+def addCommentToTicket(selectedTicket):
+    ticketId = selectedTicket['id']
+    userId = selectedTicket['user_id']
+    comment = input("Entrez votre commentaire: ")
+    currentTime = datetime.now()
+
+    try:
+        ticket.ticketResponse.ticketAnswer(ticketId, userId, comment, currentTime, None)
+        print("Commentaire ajouté.")
+    except Exception as e:
+        print(f"Erreur lors de l'ajout du commentaire: {str(e)}")
+
 
 def changeTicketStatus(ticket):
     return 1
