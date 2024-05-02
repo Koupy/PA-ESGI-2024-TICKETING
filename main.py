@@ -1,10 +1,9 @@
 import menu
 import menu.mainMenu
-import verif
 
 print("Au Temps Donné - Ticketing")
 while True:
-  print("~"*50)
+  print("\033[35m" + "~"*50 + "\033[0m")
   menu.mainMenu.displayMainMenu()
   
   choice = menu.mainMenu.getChoice()

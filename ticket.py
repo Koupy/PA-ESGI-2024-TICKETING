@@ -48,3 +48,4 @@ def selectTicket(ticket_list):
                 print("Choix invalide. Veuillez entrer un numéro de ticket valide.")
         except ValueError:
             print("Veuillez entrer un nombre.")
+

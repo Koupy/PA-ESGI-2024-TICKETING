@@ -10,12 +10,14 @@ def displayTicketsByPriority(priority):
     tickets = ticket.getTickets()
     foundTickets = False
     ticket_list = []
-    for index, ticket_item in enumerate(tickets, start=1):
+    index = 1
+    for ticket_item in tickets:
         if ticket_item['priority'] == priority:
             foundTickets = True
             ticket_list.append(ticket_item)
             print(f"\033[96m{index}. {ticket_item['title']}\033[0m")
             print(f"   Description : {ticket_item['description']}")
+            index += 1
 
     return foundTickets, ticket_list
 
