@@ -1,4 +1,5 @@
 import ticket.ticketChoice
+import ticket.ticketAction
 import menu.ticketMenu
 
 def chooseCategory():
@@ -32,6 +33,7 @@ def stockTicket():
     selectedTicket = ticket.ticketChoice.selectTicket(tickets)
     if selectedTicket:
         print(f"Vous avez sélectionné le ticket: {selectedTicket['title']}")
+        ticket.ticketAction.ticketActionMenu(selectedTicket)
 
 def truckTicket():
     found, tickets = displayTicketsByCategory("truck")
@@ -41,6 +43,7 @@ def truckTicket():
     selectedTicket = ticket.ticketChoice.selectTicket(tickets)
     if selectedTicket:
         print(f"Vous avez sélectionné le ticket: {selectedTicket['title']}")
+        ticket.ticketAction.ticketActionMenu(selectedTicket)
 
 def warehouseTicket():
     found, tickets = displayTicketsByCategory("warehouse")
@@ -50,6 +53,7 @@ def warehouseTicket():
     selectedTicket = ticket.ticketChoice.selectTicket(tickets)
     if selectedTicket:
         print(f"Vous avez sélectionné le ticket: {selectedTicket['title']}")
+        ticket.ticketAction.ticketActionMenu(selectedTicket)
 
 def serviceTicket():
     found, tickets = displayTicketsByCategory("service")
@@ -59,6 +63,7 @@ def serviceTicket():
     selectedTicket = ticket.ticketChoice.selectTicket(tickets)
     if selectedTicket:
         print(f"Vous avez sélectionné le ticket: {selectedTicket['title']}")
+        ticket.ticketAction.ticketActionMenu(selectedTicket)
 
 def planningTicket():
     found, tickets = displayTicketsByCategory("planning")
@@ -68,6 +73,7 @@ def planningTicket():
     selectedTicket = ticket.ticketChoice.selectTicket(tickets)
     if selectedTicket:
         print(f"Vous avez sélectionné le ticket: {selectedTicket['title']}")
+        ticket.ticketAction.ticketActionMenu(selectedTicket)
 
 def activityTicket():
     found, tickets = displayTicketsByCategory("activity")
@@ -77,3 +83,4 @@ def activityTicket():
     selectedTicket = ticket.ticketChoice.selectTicket(tickets)
     if selectedTicket:
         print(f"Vous avez sélectionné le ticket: {selectedTicket['title']}")
+        ticket.ticketAction.ticketActionMenu(selectedTicket)
