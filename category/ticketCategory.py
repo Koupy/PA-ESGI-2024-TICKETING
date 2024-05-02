@@ -1,16 +1,16 @@
-import ticket
+import ticket.ticketChoice
 import menu.ticketMenu
 
 def chooseCategory():
     apiCategoryNames = ["stock", "truck", "warehouse", "service", "planning", "activity"]
     displayCategoryNames = ["stocks", "camions", "entrepots", "services", "plannings", "activités"]
     categoryMap = dict(zip(apiCategoryNames, displayCategoryNames))
-    ticket.displayChoices('category', categoryMap)
+    ticket.ticketChoice.displayChoices('category', categoryMap)
     
     menu.ticketMenu.categoryTicket()
 
 def displayTicketsByCategory(category):
-    tickets = ticket.getTickets()
+    tickets = ticket.ticketChoice.getTickets()
     foundTickets = False
     ticketList = []
     index = 1
@@ -29,7 +29,7 @@ def stockTicket():
     if not found:
         print("Il n'y a pas de tickets dans la catégorie des stocks.")
         return
-    selectedTicket = ticket.selectTicket(tickets)
+    selectedTicket = ticket.ticketChoice.selectTicket(tickets)
     if selectedTicket:
         print(f"Vous avez sélectionné le ticket: {selectedTicket['title']}")
 
@@ -38,7 +38,7 @@ def truckTicket():
     if not found:
         print("Il n'y a pas de tickets dans la catégorie des camions.")
         return
-    selectedTicket = ticket.selectTicket(tickets)
+    selectedTicket = ticket.ticketChoice.selectTicket(tickets)
     if selectedTicket:
         print(f"Vous avez sélectionné le ticket: {selectedTicket['title']}")
 
@@ -47,7 +47,7 @@ def warehouseTicket():
     if not found:
         print("Il n'y a pas de tickets dans la catégorie des entrepôts.")
         return
-    selectedTicket = ticket.selectTicket(tickets)
+    selectedTicket = ticket.ticketChoice.selectTicket(tickets)
     if selectedTicket:
         print(f"Vous avez sélectionné le ticket: {selectedTicket['title']}")
 
@@ -56,7 +56,7 @@ def serviceTicket():
     if not found:
         print("Il n'y a pas de tickets dans la catégorie des services.")
         return
-    selectedTicket = ticket.selectTicket(tickets)
+    selectedTicket = ticket.ticketChoice.selectTicket(tickets)
     if selectedTicket:
         print(f"Vous avez sélectionné le ticket: {selectedTicket['title']}")
 
@@ -65,7 +65,7 @@ def planningTicket():
     if not found:
         print("Il n'y a pas de tickets dans la catégorie des plannings.")
         return
-    selectedTicket = ticket.selectTicket(tickets)
+    selectedTicket = ticket.ticketChoice.selectTicket(tickets)
     if selectedTicket:
         print(f"Vous avez sélectionné le ticket: {selectedTicket['title']}")
 
@@ -74,6 +74,6 @@ def activityTicket():
     if not found:
         print("Il n'y a pas de tickets dans la catégorie des activités.")
         return
-    selectedTicket = ticket.selectTicket(tickets)
+    selectedTicket = ticket.ticketChoice.selectTicket(tickets)
     if selectedTicket:
         print(f"Vous avez sélectionné le ticket: {selectedTicket['title']}")

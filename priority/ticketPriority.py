@@ -1,13 +1,13 @@
-import ticket
+import ticket.ticketChoice
 import menu.ticketMenu
 
 def choosePriority():
     priorityMap = {1: "faible", 2: "moyen", 3: "élevé", 4: "critique"}
-    ticket.displayChoices('priority', priorityMap)
+    ticket.ticketChoice.displayChoices('priority', priorityMap)
     menu.ticketMenu.priorityTicket()
 
 def displayTicketsByPriority(priority):
-    tickets = ticket.getTickets()
+    tickets = ticket.ticketChoice.getTickets()
     foundTickets = False
     ticketList = []
     index = 1
@@ -27,33 +27,34 @@ def lowTicketPriority():
     if not found:
         print("Il n'y a pas de tickets de priorité faible.")
         return
-    selectedTicket = ticket.selectTicket(tickets)
+    selectedTicket = ticket.ticketChoice.selectTicket(tickets)
     if selectedTicket:
-        print(f"Vous avez sélectionné le ticket: {selectedTicket['title']} - {selectedTicket['description']}")
+        print(f"Vous avez sélectionné le ticket: {selectedTicket['title']}")
 
 def midTicketPriority():
     found, tickets = displayTicketsByPriority(2)
     if not found:
         print("Il n'y a pas de tickets de priorité moyenne.")
         return
-    selectedTicket = ticket.selectTicket(tickets)
+    selectedTicket = ticket.ticketChoice.selectTicket(tickets)
     if selectedTicket:
-        print(f"Vous avez sélectionné le ticket: {selectedTicket['title']} - {selectedTicket['description']}")
+        print(f"Vous avez sélectionné le ticket: {selectedTicket['title']}")
 
 def highTicketPriority():
     found, tickets = displayTicketsByPriority(3)
     if not found:
         print("Il n'y a pas de tickets de priorité élevée.")
         return
-    selectedTicket = ticket.selectTicket(tickets)
+    selectedTicket = ticket.ticketChoice.selectTicket(tickets)
     if selectedTicket:
-        print(f"Vous avez sélectionné le ticket: {selectedTicket['title']} - {selectedTicket['description']}")
+        print(f"Vous avez sélectionné le ticket: {selectedTicket['title']}")
 
 def criticalTicketPriority():
     found, tickets = displayTicketsByPriority(4)
     if not found:
         print("Il n'y a pas de tickets de priorité critique.")
         return
-    selectedTicket = ticket.selectTicket(tickets)
+    selectedTicket = ticket.ticketChoice.selectTicket(tickets)
     if selectedTicket:
-        print(f"Vous avez sélectionné le ticket: {selectedTicket['title']} - {selectedTicket['description']}")
+        print(f"Vous avez sélectionné le ticket: {selectedTicket['title']}")
+

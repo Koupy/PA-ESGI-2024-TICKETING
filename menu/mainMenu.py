@@ -1,7 +1,7 @@
 import category.ticketCategory
 import priority.ticketPriority
 import status.ticketStatus
-import ticket
+import ticket.ticketChoice
 import priority
 import status
 import category
@@ -33,7 +33,7 @@ def mainMenuStatus():
     status.ticketStatus.chooseStatus()
 
 def mainMenuAllTickets():
-    ticket.seeTickets()
+    ticket.ticketChoice.seeTickets()
 
 def exitMenu():
     print("Exit")

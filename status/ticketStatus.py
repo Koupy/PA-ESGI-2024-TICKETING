@@ -1,13 +1,13 @@
-import ticket
+import ticket.ticketChoice
 import menu.ticketMenu
 
 def chooseStatus():
     statusMap = {1: "ouvert", 2: "en cours", 3: "resolu"}
-    ticket.displayChoices('status', statusMap)
+    ticket.ticketChoice.displayChoices('status', statusMap)
     menu.ticketMenu.statusTicket()
 
 def displayTicketsByStatus(status):
-    tickets = ticket.getTickets()
+    tickets = ticket.ticketChoice.getTickets()
     foundTickets = False
     ticketList = []
     index = 1
@@ -26,7 +26,7 @@ def openTicket():
     if not found:
         print("Il n'y a pas de tickets ouverts.")
         return
-    selectedTicket = ticket.selectTicket(tickets)
+    selectedTicket = ticket.ticketChoice.selectTicket(tickets)
     if selectedTicket:
         print(f"Vous avez sélectionné le ticket: {selectedTicket['title']} - {selectedTicket['description']}")
 
@@ -35,7 +35,7 @@ def ongoingTicket():
     if not found:
         print("Il n'y a pas de tickets en cours.")
         return
-    selectedTicket = ticket.selectTicket(tickets)
+    selectedTicket = ticket.ticketChoice.selectTicket(tickets)
     if selectedTicket:
         print(f"Vous avez sélectionné le ticket: {selectedTicket['title']} - {selectedTicket['description']}")
 
@@ -44,6 +44,6 @@ def closedTicket():
     if not found:
         print("Il n'y a pas de tickets résolus.")
         return
-    selectedTicket = ticket.selectTicket(tickets)
+    selectedTicket = ticket.ticketChoice.selectTicket(tickets)
     if selectedTicket:
         print(f"Vous avez sélectionné le ticket: {selectedTicket['title']} - {selectedTicket['description']}")
