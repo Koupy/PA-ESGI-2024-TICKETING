@@ -1,4 +1,5 @@
 import ticket.ticketChoice
+import ticket.ticketAction
 import menu.ticketMenu
 
 def chooseStatus():
@@ -28,7 +29,8 @@ def openTicket():
         return
     selectedTicket = ticket.ticketChoice.selectTicket(tickets)
     if selectedTicket:
-        print(f"Vous avez sélectionné le ticket: {selectedTicket['title']} - {selectedTicket['description']}")
+        print(f"Vous avez sélectionné le ticket: {selectedTicket['title']}")
+        ticket.ticketAction.ticketActionMenu(selectedTicket)
 
 def ongoingTicket():
     found, tickets = displayTicketsByStatus("En cours")
@@ -37,7 +39,8 @@ def ongoingTicket():
         return
     selectedTicket = ticket.ticketChoice.selectTicket(tickets)
     if selectedTicket:
-        print(f"Vous avez sélectionné le ticket: {selectedTicket['title']} - {selectedTicket['description']}")
+        print(f"Vous avez sélectionné le ticket: {selectedTicket['title']}")
+        ticket.ticketAction.ticketActionMenu(selectedTicket)
 
 def closedTicket():
     found, tickets = displayTicketsByStatus("Resolu")
@@ -46,4 +49,5 @@ def closedTicket():
         return
     selectedTicket = ticket.ticketChoice.selectTicket(tickets)
     if selectedTicket:
-        print(f"Vous avez sélectionné le ticket: {selectedTicket['title']} - {selectedTicket['description']}")
+        print(f"Vous avez sélectionné le ticket: {selectedTicket['title']}")
+        ticket.ticketAction.ticketActionMenu(selectedTicket)
