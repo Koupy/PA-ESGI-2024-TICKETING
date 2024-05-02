@@ -1,4 +1,5 @@
 import ticket.ticketResponse
+import ticket.ticketChoice
 from datetime import datetime
 
 def formatDate(date_str):
@@ -52,13 +53,40 @@ def addCommentToTicket(selectedTicket):
 
     try:
         ticket.ticketResponse.ticketAnswer(ticketId, userId, comment, currentTime, None)
-        print("Commentaire ajouté.")
+        print("\033[92mCommentaire ajouté.\033[0m")
     except Exception as e:
-        print(f"Erreur lors de l'ajout du commentaire: {str(e)}")
+        print(f"\033[91mErreur lors de l'ajout du commentaire: {str(e)}\033[0m")
 
 
-def changeTicketStatus(ticket):
-    return 1
+def changeTicketStatus(selectedTicket):
+    while True:
+        print("\nChanger le statut du ticket:")
+        print("2. Mettre le ticket en cours")
+        print("3. Résoudre le ticket")
+        print("0. Quitter")
+
+        choice = input("Votre choix: ")
+
+        if choice.isdigit():
+            choice = int(choice)
+            if choice == 2:
+                selectedTicket['status'] = "En cours"
+                ticket.ticketChoice.updateTicketStatus(selectedTicket)
+                print("\033[92mLe statut du ticket a été mis à jour vers 'En cours'.\033[0m")
+                break
+            elif choice == 3:
+                selectedTicket['status'] = "Resolu"
+                ticket.ticketChoice.updateTicketStatus(selectedTicket)
+                print("\033[92mLe statut du ticket a été mis à jour vers 'Résolu'.\033[0m")
+                break
+            elif choice == 0:
+                print("Opération annulée.")
+                break
+            else:
+                print("\033[91mChoix invalide !\033[0m")
+        else:
+            print("\033[91mVeuillez entrer un nombre !\033[0m")
+
 
 def displayTicketHistory(ticket):
     return 1
