@@ -41,6 +41,8 @@ def midTicketPriority():
     selectedTicket = ticket.ticketChoice.selectTicket(tickets)
     if selectedTicket:
         print(f"Vous avez sélectionné le ticket: {selectedTicket['title']}")
+        ticket.ticketAction.ticketActionMenu(selectedTicket)
+
 
 def highTicketPriority():
     found, tickets = displayTicketsByPriority(3)
@@ -50,6 +52,7 @@ def highTicketPriority():
     selectedTicket = ticket.ticketChoice.selectTicket(tickets)
     if selectedTicket:
         print(f"Vous avez sélectionné le ticket: {selectedTicket['title']}")
+        ticket.ticketAction.ticketActionMenu(selectedTicket)
 
 def criticalTicketPriority():
     found, tickets = displayTicketsByPriority(4)
@@ -59,4 +62,4 @@ def criticalTicketPriority():
     selectedTicket = ticket.ticketChoice.selectTicket(tickets)
     if selectedTicket:
         print(f"Vous avez sélectionné le ticket: {selectedTicket['title']}")
-
+        ticket.ticketAction.ticketActionMenu(selectedTicket)
