@@ -2,48 +2,48 @@ import ticket
 import menu.ticketMenu
 
 def chooseStatus():
-    status_map = {1: "ouvert", 2: "en cours", 3: "resolu"}
-    ticket.displayChoices('status', status_map)
+    statusMap = {1: "ouvert", 2: "en cours", 3: "resolu"}
+    ticket.displayChoices('status', statusMap)
     menu.ticketMenu.statusTicket()
 
 def displayTicketsByStatus(status):
     tickets = ticket.getTickets()
     foundTickets = False
-    ticket_list = []
+    ticketList = []
     index = 1
-    for ticket_item in tickets:
-        if ticket_item['status'].lower() == status.lower():
+    for ticketItem in tickets:
+        if ticketItem['status'].lower() == status.lower():
             foundTickets = True
-            ticket_list.append(ticket_item)
-            print(f"\033[96m{index}. {ticket_item['title']}\033[0m")
-            print(f"   Description : {ticket_item['description']}")
+            ticketList.append(ticketItem)
+            print(f"\033[96m{index}. {ticketItem['title']}\033[0m")
+            print(f"   Description : {ticketItem['description']}")
             index += 1
 
-    return foundTickets, ticket_list
+    return foundTickets, ticketList
 
 def openTicket():
     found, tickets = displayTicketsByStatus("Ouvert")
     if not found:
         print("Il n'y a pas de tickets ouverts.")
         return
-    selected_ticket = ticket.selectTicket(tickets)
-    if selected_ticket:
-        print(f"Vous avez sélectionné le ticket: {selected_ticket['title']} - {selected_ticket['description']}")
+    selectedTicket = ticket.selectTicket(tickets)
+    if selectedTicket:
+        print(f"Vous avez sélectionné le ticket: {selectedTicket['title']} - {selectedTicket['description']}")
 
 def ongoingTicket():
     found, tickets = displayTicketsByStatus("En cours")
     if not found:
         print("Il n'y a pas de tickets en cours.")
         return
-    selected_ticket = ticket.selectTicket(tickets)
-    if selected_ticket:
-        print(f"Vous avez sélectionné le ticket: {selected_ticket['title']} - {selected_ticket['description']}")
+    selectedTicket = ticket.selectTicket(tickets)
+    if selectedTicket:
+        print(f"Vous avez sélectionné le ticket: {selectedTicket['title']} - {selectedTicket['description']}")
 
 def closedTicket():
     found, tickets = displayTicketsByStatus("Resolu")
     if not found:
         print("Il n'y a pas de tickets résolus.")
         return
-    selected_ticket = ticket.selectTicket(tickets)
-    if selected_ticket:
-        print(f"Vous avez sélectionné le ticket: {selected_ticket['title']} - {selected_ticket['description']}")
+    selectedTicket = ticket.selectTicket(tickets)
+    if selectedTicket:
+        print(f"Vous avez sélectionné le ticket: {selectedTicket['title']} - {selectedTicket['description']}")

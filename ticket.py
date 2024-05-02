@@ -13,37 +13,37 @@ def seeTickets():
         # print(ticket['title'])  
         # print(f"Description : {ticket['title']}")  
 
-def countTicketsByAttribute(tickets, attribute, value_map):
-    counts = {value: 0 for value in value_map.values()}
+def countTicketsByAttribute(tickets, attribute, valueMap):
+    counts = {value: 0 for value in valueMap.values()}
     for ticket in tickets:
-        ticket_attribute = ticket[attribute]
+        ticketAttribute = ticket[attribute]
 
-        if isinstance(ticket_attribute, str):
-            ticket_attribute = ticket_attribute.lower()
+        if isinstance(ticketAttribute, str):
+            ticketAttribute = ticketAttribute.lower()
         
-        ticket_attribute = value_map.get(ticket_attribute, ticket_attribute)
+        ticketAttribute = valueMap.get(ticketAttribute, ticketAttribute)
 
-        if ticket_attribute in counts:
-            counts[ticket_attribute] += 1
+        if ticketAttribute in counts:
+            counts[ticketAttribute] += 1
             
     return counts
 
-def displayChoices(attribute, value_map):
+def displayChoices(attribute, valueMap):
     tickets = getTickets()
-    counts = countTicketsByAttribute(tickets, attribute, value_map)
+    counts = countTicketsByAttribute(tickets, attribute, valueMap)
     print(f"Quels tickets souhaitez-vous voir ?")
-    for i, (key, value) in enumerate(value_map.items()):
+    for i, (key, value) in enumerate(valueMap.items()):
         print(f"{i+1}. {value} ({counts.get(value, 0)})")
 
-def selectTicket(ticket_list):
+def selectTicket(ticketList):
     print("Entrez le numéro du ticket (0 pour revenir au menu)")
     while True:
         try:
             choice = int(input("Votre choix: "))
             if choice == 0:
                 return None
-            if 1 <= choice <= len(ticket_list):
-                return ticket_list[choice - 1]
+            if 1 <= choice <= len(ticketList):
+                return ticketList[choice - 1]
             else:
                 print("Choix invalide. Veuillez entrer un numéro de ticket valide.")
         except ValueError:

@@ -2,3 +2,4 @@
 *.pyc
 /priority
 /__pycache__
+/category
