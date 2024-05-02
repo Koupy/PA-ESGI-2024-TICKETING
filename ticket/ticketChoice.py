@@ -5,6 +5,23 @@ def getTickets():
     response = requests.get(url)
     return response.json()
 
+import requests
+
+def updateTicketStatus(selectedTicket):
+    url = f"http://localhost:5000/api/ticket/{selectedTicket['id']}"
+    headers = {'Content-Type': 'application/json'}
+    data = {
+        'status': selectedTicket['status']
+    }
+
+    response = requests.put(url, json=data, headers=headers)
+
+    if response.status_code == 200:
+        return
+    else:
+        print(f"Failed to update ticket status: {response.status_code}")
+        print("Response message:", response.text)
+    
 def seeTickets():
     tickets = getTickets()
     for ticket in tickets:
@@ -48,4 +65,3 @@ def selectTicket(ticketList):
                 print("Choix invalide. Veuillez entrer un numéro de ticket valide.")
         except ValueError:
             print("Veuillez entrer un nombre.")
-
