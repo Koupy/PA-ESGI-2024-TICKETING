@@ -1,4 +1,5 @@
 import ticket.ticketChoice
+import ticket.ticketAction
 import menu.ticketMenu
 
 def choosePriority():
@@ -21,7 +22,6 @@ def displayTicketsByPriority(priority):
 
     return foundTickets, ticketList
 
-
 def lowTicketPriority():
     found, tickets = displayTicketsByPriority(1)
     if not found:
@@ -30,6 +30,8 @@ def lowTicketPriority():
     selectedTicket = ticket.ticketChoice.selectTicket(tickets)
     if selectedTicket:
         print(f"Vous avez sélectionné le ticket: {selectedTicket['title']}")
+        ticket.ticketAction.ticketActionMenu(selectedTicket)
+
 
 def midTicketPriority():
     found, tickets = displayTicketsByPriority(2)

@@ -1,6 +1,13 @@
 import requests
+from datetime import datetime
 
-def ticketAction(selected_ticket):
+def formatDate(date_str):
+    date = datetime.strptime(date_str, '%a, %d %b %Y %H:%M:%S %Z')
+    formattedDate = date.strftime('%d/%m/%Y à %H:%M:%S')
+    return formattedDate
+
+
+def ticketActionMenu(selected_ticket):
     while True:
         print("\nActions disponibles pour le ticket:")
         print("1. Voir toutes les informations du ticket")
@@ -9,7 +16,7 @@ def ticketAction(selected_ticket):
         print("4. Voir l'historique du ticket")
         print("0. Menu principal")
 
-        choice = input("Entrez votre choix (1-4): ")
+        choice = input("Entrez votre choix : ")
         if choice.isdigit():
             choice = int(choice)
             if choice == 1:
@@ -27,14 +34,21 @@ def ticketAction(selected_ticket):
         else:
             print("Veuillez entrer un nombre.")
 
-def displayTicketDetails(selected_ticket):
+def displayTicketDetails(ticket):
+    print("\nDétails du Ticket:")
+    print(f"Titre: {ticket['title']}")
+    print("\033[96m" + "."*10 + "\033[0m")
+    print(f"Description: {ticket['description']}")
+    print(f"Catégorie: {ticket['category']}")
+    formattedDate = formatDate(ticket['created_at'])
+    print(f"Créé le: {formattedDate}")
+    print("\033[96m" + "."*10 + "\033[0m")
+
+def addCommentToTicket(ticket):
     return 1
 
-def addCommentToTicket(selected_ticket):
+def changeTicketStatus(ticket):
     return 1
 
-def changeTicketStatus(selected_ticket):
-    return 1
-
-def displayTicketHistory(selected_ticket):
+def displayTicketHistory(ticket):
     return 1
