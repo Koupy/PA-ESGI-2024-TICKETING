@@ -1,14 +1,25 @@
 import ticket.ticketResponse
 import ticket.ticketChoice
+import json
 from datetime import datetime
 
-def formatDate(date_str):
-    date = datetime.strptime(date_str, '%a, %d %b %Y %H:%M:%S %Z')
-    formattedDate = date.strftime('%d/%m/%Y à %H:%M:%S')
-    return formattedDate
+def formatDate(dateStr):
+    try:
+        date = datetime.strptime(dateStr, '%a, %d %b %Y %H:%M:%S')
+        return date.strftime('%d/%m/%Y à %H:%M:%S')
+    except ValueError:
+        return dateStr
 
-
-def ticketActionMenu(selected_ticket):
+def parseMessage(message):
+    try:
+        if message.startswith("{"):
+            messageDict = json.loads(message.replace("'", '"'))
+            return messageDict.get('comment', message)
+        return message
+    except json.JSONDecodeError:
+        return message
+    
+def ticketActionMenu(selectedTicket):
     while True:
         print("\nActions disponibles pour le ticket:")
         print("1. Voir toutes les informations du ticket")
@@ -21,13 +32,13 @@ def ticketActionMenu(selected_ticket):
         if choice.isdigit():
             choice = int(choice)
             if choice == 1:
-                displayTicketDetails(selected_ticket)
+                displayTicketDetails(selectedTicket)
             elif choice == 2:
-                addCommentToTicket(selected_ticket)
+                addCommentToTicket(selectedTicket)
             elif choice == 3:
-                changeTicketStatus(selected_ticket)
+                changeTicketStatus(selectedTicket)
             elif choice == 4:
-                displayTicketHistory(selected_ticket)
+                displayTicketHistory(selectedTicket)
             elif choice == 0:
                 break
             else:
@@ -50,11 +61,12 @@ def addCommentToTicket(selectedTicket):
     userId = selectedTicket['user_id']
     comment = input("Entrez votre commentaire: ")
     currentTime = datetime.now()
-
+    
     try:
-        ticket.ticketResponse.ticketAnswer(ticketId, userId, comment, currentTime, None)
+        ticket.ticketResponse.ticketAnswer(ticketId, userId, comment)
         print("\033[92mCommentaire ajouté.\033[0m")
     except Exception as e:
+        print(currentTime)
         print(f"\033[91mErreur lors de l'ajout du commentaire: {str(e)}\033[0m")
 
 
@@ -86,7 +98,25 @@ def changeTicketStatus(selectedTicket):
                 print("\033[91mChoix invalide !\033[0m")
         else:
             print("\033[91mVeuillez entrer un nombre !\033[0m")
+    
+def displayTicketHistory(selectedTicket):
+    test = ticket.ticketResponse.getTicketAnswers()
+    print(test)
+    ticketID = selectedTicket['id']
+    print(ticketID)
+    allResponses = ticket.ticketResponse.getTicketAnswers()  
+    filteredResponses = [response for response in allResponses if response['ticket_id'] == ticketID]
 
+    print(f"\nHistory for Ticket ID {ticketID}:")
+    if filteredResponses:
+        for entry in filteredResponses:
+            createdAt = formatDate(entry['created_at'])
+            message = parseMessage(entry['message'])
+            updatedAt = formatDate(entry['updated_at']) if entry['updated_at'] else 'N/A'
 
-def displayTicketHistory(ticket):
-    return 1
+            print(f"Posté le: {createdAt}")
+            print(f"Message: {message}")
+            print("\033[96m" + "."*10 + "\033[0m")
+
+    else:
+        print("No history available for this ticket.")
