@@ -5,8 +5,6 @@ def getTickets():
     response = requests.get(url)
     return response.json()
 
-import requests
-
 def updateTicketStatus(selectedTicket):
     url = f"http://localhost:5000/api/ticket/{selectedTicket['id']}"
     headers = {'Content-Type': 'application/json'}
